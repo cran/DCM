@@ -24,7 +24,7 @@
 #'
 #' In both cases stack and split, empty spaces are kept that way.
 #'
-#' @return DCM is an graphic interface
+#' @return DCM is a graphic interface
 #' @examples \dontrun{
 #' ##Install package
 #' library(DCM)
@@ -146,19 +146,21 @@ DCM<-function(){
     p<-get("p",envir =env)
 
     fromDataToStack <- function(gdata){
-      nameColumns <- c(colnames(gdata)[1], "Label", "Data")
+      nameColumns <- c(names(gdata)[1], names(gdata)[2], "Label", "Data")
 
       dataStacked <- data.frame(stringsAsFactors=FALSE)
-      for (row in 1:nrow(gdata) ){
-        for (col in 2:ncol(gdata) ){
-          newRow <- c(gdata[row,1], colnames(gdata)[col], gdata[row, col])
+      product <- ""
+      for (row in 1:nrow(gdata)){
+        product <- gdata[row, 1]
+        for (col in 3:ncol(gdata)){
+          newRow <- c(product, gdata[row,2], names(gdata)[col], gdata[row, col])
           dataStacked = rbind(dataStacked, data.frame(t(newRow)))
         }
       }
-      colnames(dataStacked) <- nameColumns
+      names(dataStacked) <- nameColumns
       dataStacked[is.na(dataStacked)] <- ""
       text<-print("Information structure",quote=FALSE)
-      Z<-pandoc.table(head(dataStacked),plain.ascii = FALSE,justify = c('center', 'left', 'center'))
+      Z<-pandoc.table(head(dataStacked),plain.ascii = FALSE,justify = c('center','center', 'left', 'center'))
       newList <- list("des"=text,"names" = Z)
       assign("gdata1",dataStacked, envir =env)
       assign("p",1, envir =env)
@@ -341,6 +343,12 @@ DCM<-function(){
 
   #Information
   tmp1 <- gframe("", container=g1, expand=TRUE,horizontal=FALSE)
-  img<-gimage("R/logo/DICS.gif",container=tmp1)
+  tg<-glabel("                                      Data Converter Module                                 ",container=tmp1)
+  font(tg) <- list(weight="bold",size= "x-large",family="sans",align ="center",spacing = 5)
+  tg<-glabel("                                                                  ",container=tmp1)
+  tg<-glabel("                 Delphi Intelligence                 ",container=tmp1)
+  font(tg) <- list(weight="bold",size= 32,family="sans",align ="center",spacing = 5)
+  tg<-glabel("                                                         Sophisticated Research                                 ",container=tmp1)
+  font(tg) <- list(weight="bold",size= 16,family="sans",align ="center",spacing = 5)
   visible(w) <- TRUE
 }

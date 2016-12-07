@@ -1,6 +1,6 @@
 Package: DCM
 Type: Package
-Version: 0.1.0
+Version: 0.1.1
 Date: 2016-12-02
 Title: Data Converter Module
 Author: Delphi Intelligence
@@ -14,6 +14,6 @@ URL: http://www.uv.mx/personal/nehuerta/dcm/
 NeedsCompilation: no
 Encoding: UTF-8
 RoxygenNote: 5.0.1
-Packaged: 2016-12-04 12:44:04 UTC; sofiahuerta
+Packaged: 2016-12-06 05:35:51 UTC; sofiahuerta
 Repository: CRAN
-Date/Publication: 2016-12-04 15:05:16
+Date/Publication: 2016-12-07 08:15:05

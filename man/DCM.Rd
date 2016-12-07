@@ -7,7 +7,7 @@
 DCM()
 }
 \value{
-DCM is an graphic interface
+DCM is a graphic interface
 }
 \description{
 Data Converter Module (DCM) converts the dataset format from split into stack and to the reverse.
